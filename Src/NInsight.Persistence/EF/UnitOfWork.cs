@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 using NInsight.Core.Domain;
 
-namespace NInsight.Core.Repositories.EF
+namespace NInsight.Persistence.EF
 {
     public interface IUnitOfWork : IDisposable
     {

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Data.Entity;
+ 
 
 using Castle.Windsor;
-
-using NInsight.Core.Repositories.EF;
 
 namespace NInsight.Core.Config
 {
@@ -15,8 +13,7 @@ namespace NInsight.Core.Config
         {
             new Logger();
 
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BeyondTestContext>());
-        }
+         }
 
         public IWindsorContainer Container { get; set; }
 

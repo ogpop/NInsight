@@ -5,23 +5,10 @@ using System.Linq;
 using System.Linq.Expressions;
 
 using NInsight.Core.Domain;
+using NInsight.Core.Repositories;
 
-namespace NInsight.Core.Repositories.EF
+namespace NInsight.Persistence.EF
 {
-    public interface IGenericRepository<T>
-        where T : BaseEntity
-    {
-        IEnumerable<T> GetAll();
-
-        IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
-
-        T Add(T entity);
-
-        T Delete(T entity);
-
-        void Edit(T entity);
-    }
-
     public class GenericRepository<T> : IGenericRepository<T>
         where T : BaseEntity
     {

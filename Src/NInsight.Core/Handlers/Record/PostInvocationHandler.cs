@@ -4,14 +4,13 @@ using Newtonsoft.Json;
 
 using NInsight.Core.Context;
 using NInsight.Core.Domain;
-using NInsight.Core.Repositories.EF;
-using NInsight.Core.Repositories.Neo4j;
+using NInsight.Core.Repositories;
 
 namespace NInsight.Core.Handlers.Record
 {
     internal class PostInvocationHandler
     {
-        public NodeRepository NodeRepository { get; set; }
+        public INodeRepository NodeRepository { get; set; }
 
         public IGenericRepository<Point> PointRepository { get; set; }
 

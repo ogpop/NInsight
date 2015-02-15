@@ -4,10 +4,11 @@ using System.Linq;
 using Neo4jClient;
 
 using NInsight.Core.Domain;
+using NInsight.Core.Repositories;
 
-namespace NInsight.Core.Repositories.Neo4j
+namespace NInsight.Persistence.Neo4j
 {
-    internal class NodeRepository
+    internal class NodeRepository : INodeRepository
     {
         #region Static Fields
 
@@ -17,7 +18,7 @@ namespace NInsight.Core.Repositories.Neo4j
 
         #region Public Methods and Operators
 
-        internal void Create(Application newApp)
+        public void Create(Application newApp)
         {
             this.graphClient.Cypher.Merge("(app:Application { Id: {newApp}.Id })")
                 .OnCreate()
@@ -26,7 +27,7 @@ namespace NInsight.Core.Repositories.Neo4j
                 .ExecuteWithoutResults();
         }
 
-        internal void AddRun(Application application, Run run)
+        public void AddRun(Application application, Run run)
         {
             this.graphClient.Cypher.Match("(app:Application)")
                 .Where((Application app) => app.Id == run.ApplicationId)
@@ -35,7 +36,7 @@ namespace NInsight.Core.Repositories.Neo4j
                 .ExecuteWithoutResults();
         }
 
-        internal void AddClass(ClassType classType)
+        public void AddClass(ClassType classType)
         {
             this.graphClient.Cypher.Match("(run:Run)")
                 .Where((Run run) => run.RunId == classType.RunId)
@@ -46,7 +47,7 @@ namespace NInsight.Core.Repositories.Neo4j
             //     runs.AddOrUpdate(run.Key, run, (k, existingVal) => { return existingVal; });
         }
 
-        internal void AddPoint(Point point)
+        public void AddPoint(Point point)
         {
             point.ToNode();
             this.graphClient.Cypher.Match("(ct:ClassType)")
@@ -67,7 +68,7 @@ namespace NInsight.Core.Repositories.Neo4j
             this.AddClass(point.Class);
         }
 
-        private Point GetPoint(Guid pointId)
+        public Point GetPoint(Guid pointId)
         {
             return
                 this.graphClient.Cypher.Match("(point:Point)")
@@ -76,7 +77,7 @@ namespace NInsight.Core.Repositories.Neo4j
                     .Results.FirstOrDefault();
         }
 
-        internal void AddParameter(Point point1, Parameter parameter)
+        public void AddParameter(Point point1, Parameter parameter)
         {
             this.graphClient.Cypher.Match("(point:Point)")
                 .Where((Point point) => point.PointId == parameter.PointId)
@@ -96,7 +97,7 @@ namespace NInsight.Core.Repositories.Neo4j
                 .ExecuteWithoutResults();
         }
 
-        internal void AddReturnParameter(Point point1, Parameter parameter)
+        public void AddReturnParameter(Point point1, Parameter parameter)
         {
             this.graphClient.Cypher.Match("(point:Point)")
                 .Where((Point point) => point.PointId == parameter.PointId)

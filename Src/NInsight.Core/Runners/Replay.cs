@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using NInsight.Core.Config;
 using NInsight.Core.Context;
 using NInsight.Core.Domain;
-using NInsight.Core.Repositories.EF;
+using NInsight.Core.Repositories;
 
 namespace NInsight.Core.Runners
 {

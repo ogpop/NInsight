@@ -5,8 +5,7 @@ using System.Linq;
 using NInsight.Core.Config;
 using NInsight.Core.Domain;
 using NInsight.Core.Mappers;
-using NInsight.Core.Repositories.EF;
-using NInsight.Core.Repositories.Neo4j;
+using NInsight.Core.Repositories;
 
 namespace NInsight.Core.Context
 {
@@ -22,7 +21,7 @@ namespace NInsight.Core.Context
         internal Run Run;
 
         public IGenericRepository<Application> ApplicationRepository { get; set; }
-        public NodeRepository NodeRepository { get; set; }
+        public INodeRepository NodeRepository { get; set; }
 
         internal static RecordContext Current
         {

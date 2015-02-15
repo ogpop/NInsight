@@ -6,11 +6,9 @@ using Castle.Windsor;
 
 using Common.Logging;
 
-using Neo4jClient;
 
 using NInsight.Core.Domain;
 using NInsight.Core.Interceptors;
-using NInsight.Core.Repositories.EF;
 
 namespace NInsight.Core.Config
 {
@@ -24,16 +22,11 @@ namespace NInsight.Core.Config
                 Configuration.Configure.Container.Register(
                     Classes.FromThisAssembly()
                         .IncludeNonPublicTypes()
-                        .Where(p => p.Namespace != null && p.Namespace.StartsWith("BeyondTest"))
+                        .Where(p => p.Namespace != null && p.Namespace.StartsWith("NInsight"))
                         .WithService.DefaultInterfaces()
                         .LifestyleTransient());
                
-                Configuration.Configure.Container.Register(
-                    Component.For<IGenericRepository<Application>>()
-                        .Instance(new GenericRepository<Application>(new BeyondTestContext())));
-                Configuration.Configure.Container.Register(
-                    Component.For<IGenericRepository<Point>>()
-                        .Instance(new GenericRepository<Point>(new BeyondTestContext())));
+              
                 Configuration.Configure.Container.Register(
                     Component.For<RecordInterceptor>().Named("RecordInterceptor").LifestyleTransient());
                 Configuration.Configure.Container.Register(
@@ -43,16 +36,6 @@ namespace NInsight.Core.Config
 
 
                 new InterceptorInstaller().Do(container);
-
-
-                if (NInsightSettings.Settings.Neo4j.Use)
-                {
-                      var graphClient = new GraphClient(new Uri(NInsightSettings.Settings.Neo4j.Url));
-                      graphClient.Connect();
-                      Configuration.Configure.Container.Register(
-                  Component.For<GraphClient>().Instance(graphClient));
-                     
-                }
 
 
             }

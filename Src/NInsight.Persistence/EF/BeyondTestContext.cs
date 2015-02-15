@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 using NInsight.Core.Domain;
 
-namespace NInsight.Core.Repositories.EF
+namespace NInsight.Persistence.EF
 {
     public class BeyondTestContext : DbContext
     {
