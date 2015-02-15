@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NInsight.Core", "Src\NInsight.Core\NInsight.Core.csproj", "{1ABB1954-A62E-492C-8FDE-D897395EA02E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NInsight.Core", "NInsight.Core\NInsight.Core.csproj", "{1ABB1954-A62E-492C-8FDE-D897395EA02E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NInsight.Persistence", "Src\NInsight.Persistence\NInsight.Persistence.csproj", "{9861AF41-FD5A-498C-B766-E793F74D7685}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NInsight.Persistence", "NInsight.Persistence\NInsight.Persistence.csproj", "{9861AF41-FD5A-498C-B766-E793F74D7685}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D1DF953B-26BD-490B-8AB8-34D4343D4795}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
