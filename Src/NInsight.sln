@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D1DF95
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{4714A865-1444-45B0-B796-6BD099BB6A77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccount", "Examples\BankAccount\BankAccount.csproj", "{9390C491-A244-42C2-9AEA-8CAA9F76216F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,8 +32,15 @@ Global
 		{9861AF41-FD5A-498C-B766-E793F74D7685}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9861AF41-FD5A-498C-B766-E793F74D7685}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9861AF41-FD5A-498C-B766-E793F74D7685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9390C491-A244-42C2-9AEA-8CAA9F76216F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9390C491-A244-42C2-9AEA-8CAA9F76216F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9390C491-A244-42C2-9AEA-8CAA9F76216F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9390C491-A244-42C2-9AEA-8CAA9F76216F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9390C491-A244-42C2-9AEA-8CAA9F76216F} = {4714A865-1444-45B0-B796-6BD099BB6A77}
 	EndGlobalSection
 EndGlobal

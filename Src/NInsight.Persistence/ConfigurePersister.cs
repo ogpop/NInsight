@@ -12,24 +12,27 @@ using Neo4jClient;
 using NInsight.Core.Config;
 using NInsight.Core.Domain;
 using NInsight.Core.Repositories;
-
-using BeyondTestContext = NInsight.Persistence.EF.BeyondTestContext;
+using NInsight.Persistence.EF;
+using NInsight.Persistence.Neo4j;
 
 namespace NInsight.Persistence
 {
     public static class ConfigurePersister
     {
-        public static void Do(this Configure config)
+        public static void AddPersiting(this Configure config)
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BeyondTestContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<NInsightContext>());
      
             Configuration.Configure.Container.Register(
                 Component.For<IGenericRepository<Application>>()
-                    .Instance(new EF.GenericRepository<Application>(new BeyondTestContext())));
+                    .Instance(new EF.GenericRepository<Application>(new NInsightContext())));
             Configuration.Configure.Container.Register(
                 Component.For<IGenericRepository<Point>>()
-                    .Instance(new EF.GenericRepository<Point>(new BeyondTestContext())));
+                    .Instance(new EF.GenericRepository<Point>(new NInsightContext())));
 
+            Configuration.Configure.Container.Register(
+               Component.For<INodeRepository>()
+                   .ImplementedBy<NodeRepository>());
 
             if (NInsightSettings.Settings.Neo4j.Use)
             {

@@ -20,6 +20,7 @@ namespace NInsight.Persistence.Neo4j
 
         public void Create(Application newApp)
         {
+            newApp.Runs = null;
             this.graphClient.Cypher.Merge("(app:Application { Id: {newApp}.Id })")
                 .OnCreate()
                 .Set("app = {newApp}")
@@ -29,6 +30,7 @@ namespace NInsight.Persistence.Neo4j
 
         public void AddRun(Application application, Run run)
         {
+            Create(application);
             this.graphClient.Cypher.Match("(app:Application)")
                 .Where((Application app) => app.Id == run.ApplicationId)
                 .Create("app-[:Has]->(run:Run {newRun})")
@@ -59,13 +61,15 @@ namespace NInsight.Persistence.Neo4j
             var parentPoint = this.GetPoint(point.ParentPointId);
             var pointExisting = this.GetPoint(point.PointId);
 
+            var classType = point.Class;
+            point.Class = null;
             this.graphClient.Cypher.Match("(point1:Point)", "(point2:Point)")
                 .Where((Point point1) => point1.PointId == point.ParentPointId)
                 .AndWhere((Point point2) => point2.PointId == point.PointId)
                 .Create("point1-[:CALLS]->point2")
                 .ExecuteWithoutResults();
 
-            this.AddClass(point.Class);
+            this.AddClass(classType);
         }
 
         public Point GetPoint(Guid pointId)

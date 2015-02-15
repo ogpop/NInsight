@@ -72,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurePersister.cs" />
-    <Compile Include="EF\BeyondTestContext.cs" />
+    <Compile Include="EF\NInsightContext.cs" />
     <Compile Include="EF\GenericRepository.cs" />
     <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Neo4j\NodeRepository.cs" />

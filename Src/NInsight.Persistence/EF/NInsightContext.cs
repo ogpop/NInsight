@@ -6,12 +6,12 @@ using NInsight.Core.Domain;
 
 namespace NInsight.Persistence.EF
 {
-    public class BeyondTestContext : DbContext
+    public class NInsightContext : DbContext
     {
-        public BeyondTestContext()
-            : base("TestBeyondContext")
+        public NInsightContext()
+            : base("NInsightContext")
         {
-            this.Database.Log = Console.WriteLine;
+           // this.Database.Log = Console.WriteLine;
         }
 
         public DbSet<Application> Applications { get; set; }

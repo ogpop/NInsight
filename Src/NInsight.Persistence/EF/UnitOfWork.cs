@@ -68,7 +68,7 @@ namespace NInsight.Persistence.EF
 
     public class UnitOfWork2 : IDisposable
     {
-        private readonly BeyondTestContext context = new BeyondTestContext();
+        private readonly NInsightContext context = new NInsightContext();
 
         private GenericRepository<Application> applicationRepository;
 
