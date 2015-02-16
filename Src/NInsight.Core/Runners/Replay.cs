@@ -15,7 +15,7 @@ namespace NInsight.Core.Runners
 {
     public class Replay
     {
-        internal ISystemRepository ApplicationRepository { get; set; }
+        internal IPersistState ApplicationRepository { get; set; }
 
         #region Public Methods and Operators
 

@@ -10,7 +10,7 @@ namespace NInsight.Core.Handlers.Record
 {
     internal class PostInvocationHandler
     {
-       public ISystemRepository ApplicationRepository { get; set; }
+       public IPersistState ApplicationRepository { get; set; }
 
         public void Handle(IInvocation invocation)
         {

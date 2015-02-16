@@ -19,7 +19,7 @@ namespace NInsight.Core.Context
         internal Stack<Point> PointStack = new Stack<Point>();
 
         internal Run Run;
-        public ISystemRepository ApplicationRepository { get; set; }
+        public IPersistState ApplicationRepository { get; set; }
         
 
         internal static RecordContext Current

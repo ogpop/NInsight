@@ -40,7 +40,11 @@ namespace BankAccount
             Configuration.Configure.DefiningEndpointAs(t => t.Name.EndsWith("Repository"));
            
             Container.Install(new Installer());
-            Configuration.Configure.AddEntityFrameworkPersiting();
+            //Configuration.Configure.AddEntityFrameworkPersiting();
+
+            Configuration.Configure.AddNeo4jPersiting();
+
+
         }
     }
 }

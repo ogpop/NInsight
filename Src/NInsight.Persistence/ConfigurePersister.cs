@@ -31,16 +31,16 @@ namespace NInsight.Persistence
 
 
             Configuration.Configure.Container.Register(
-                 Component.For<ISystemRepository>()
-                     .ImplementedBy<SystemRepository>());
+                 Component.For<IPersistState>()
+                     .ImplementedBy<EF.SystemRepository>());
 
         }
 
         public static void AddNeo4jPersiting(this Configure config)
         {
             Configuration.Configure.Container.Register(
-               Component.For<INodeRepository>()
-                   .ImplementedBy<NodeRepository>());
+               Component.For<IPersistState>()
+                   .ImplementedBy<Neo4j.SystemRepository>());
 
             if (NInsightSettings.Settings.Neo4j.Use)
             {

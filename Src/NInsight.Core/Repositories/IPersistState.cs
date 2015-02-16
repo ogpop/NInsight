@@ -8,7 +8,7 @@ using NInsight.Core.Domain;
 
 namespace NInsight.Core.Repositories
 {
-    internal interface ISystemRepository      {
+    internal interface IPersistState      {
         void Create(Point point);
         void CreateIfNotExists(Application application);
         void Create(Run run);

@@ -76,8 +76,7 @@
     <Compile Include="EF\IGenericRepository.cs" />
     <Compile Include="EF\NInsightContext.cs" />
     <Compile Include="EF\GenericRepository.cs" />
-    <Compile Include="EF\UnitOfWork.cs" />
-    <Compile Include="Neo4j\NodeRepository.cs" />
+    <Compile Include="Neo4j\SystemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

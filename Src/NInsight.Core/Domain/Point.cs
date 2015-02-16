@@ -64,6 +64,7 @@ namespace NInsight.Core.Domain
 
             this.ReturnArgument = JsonConvert.SerializeObject(this.ReturnValue);
             this.ReturnValue = null;
+            this.Class = null;
             return this;
         }
     }
