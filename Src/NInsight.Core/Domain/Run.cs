@@ -10,13 +10,13 @@ namespace NInsight.Core.Domain
         public Run()
         {
             this.Created = DateTime.Now.ToUniversalTime();
-            this.RunId = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.Points = new List<Point>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid RunId { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 

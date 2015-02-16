@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 using NInsight.Core.Domain;
 
-namespace NInsight.Core.Repositories
+namespace NInsight.Persistence.EF
 {
     public interface IGenericRepository<T>
         where T : BaseEntity

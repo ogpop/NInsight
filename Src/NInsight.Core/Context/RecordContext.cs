@@ -19,9 +19,8 @@ namespace NInsight.Core.Context
         internal Stack<Point> PointStack = new Stack<Point>();
 
         internal Run Run;
-
-        public IGenericRepository<Application> ApplicationRepository { get; set; }
-        public INodeRepository NodeRepository { get; set; }
+        public ISystemRepository ApplicationRepository { get; set; }
+        
 
         internal static RecordContext Current
         {
@@ -40,11 +39,12 @@ namespace NInsight.Core.Context
         {
             
             var applicationId = AppDomain.CurrentDomain.FriendlyName;
-            var application = this.ApplicationRepository.FindBy(a => a.Id == applicationId).FirstOrDefault();
+            var application = this.ApplicationRepository.GetApplicationById(applicationId);
             if (application == null)
             {
                 application = new Application { Id = applicationId };
-                this.ApplicationRepository.Add(application);
+                this.ApplicationRepository.CreateIfNotExists(application);
+                
             }
             // this.runRepository.Create(application.Id, run);
             if (this.Run == null)
@@ -53,14 +53,13 @@ namespace NInsight.Core.Context
                 this.Run = run;
                 application.Runs.Add(run);
 
-                this.ApplicationRepository.Edit(application);
-                this.NodeRepository.AddRun(application, run);
+                this.ApplicationRepository.Create(run);
             }
         }
 
         internal void BeginInvocation(Point point)
         {
-            this.Run.Points.Add(point);
+            //this.Run.Points.Add(point);
             this.CurrentPoint = point;
             if (this.PointStack.Count > 0)
             {
@@ -71,7 +70,7 @@ namespace NInsight.Core.Context
 
        internal void EndInvocation()
        {
-           this.PointStack.Pop();
+          this.CurrentPoint = this.PointStack.Pop();
        }
     }
 }

@@ -16,14 +16,17 @@ namespace NInsight.Core.Domain
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PointId { get; set; }
 
         public Guid ParentPointId { get; set; }
+       // [ForeignKey("RunId")]
+        public Guid Run1Id { get; set; }
 
-        public Guid RunId { get; set; }
+        //[InverseProperty("Id")]
+       // [ForeignKey("RunId")]
+       // public Run Run { get; set; }
 
-        public Guid ClassId { get; set; }
+        public Guid Class1Id { get; set; }
 
         public string TypeFullName { get; set; }
 

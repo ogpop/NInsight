@@ -26,18 +26,21 @@ namespace BankAccount
             ConfigureNInsight();
 
 
-            Container.Resolve<DepositHandler>().Handle( new DepositCommand
+            Container.Resolve<ITransferHandler>().Handle( new TransferCommand
                                                         {
-                                                            AccountId = "acc1", 
+                                                            DebitAccountId = "acc1",
+                                                            CreditAccountId = "acc2", 
                                                             Amount = 500
                                                         });
 
         }
         private static void ConfigureNInsight()
         {
-            Configuration.Configure.DefiningTracepointAs(t => true);
+            Configuration.Configure.DefiningStartpointAs(t => t.Name.EndsWith("Handler"));
+            Configuration.Configure.DefiningEndpointAs(t => t.Name.EndsWith("Repository"));
+           
             Container.Install(new Installer());
-            Configuration.Configure.AddPersiting();
+            Configuration.Configure.AddEntityFrameworkPersiting();
         }
     }
 }

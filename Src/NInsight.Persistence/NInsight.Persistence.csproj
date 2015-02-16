@@ -72,6 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurePersister.cs" />
+    <Compile Include="EF\SystemRepository.cs" />
+    <Compile Include="EF\IGenericRepository.cs" />
     <Compile Include="EF\NInsightContext.cs" />
     <Compile Include="EF\GenericRepository.cs" />
     <Compile Include="EF\UnitOfWork.cs" />

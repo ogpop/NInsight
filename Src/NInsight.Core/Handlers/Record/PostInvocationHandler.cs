@@ -10,12 +10,11 @@ namespace NInsight.Core.Handlers.Record
 {
     internal class PostInvocationHandler
     {
-        public INodeRepository NodeRepository { get; set; }
-
-        public IGenericRepository<Point> PointRepository { get; set; }
+       public ISystemRepository ApplicationRepository { get; set; }
 
         public void Handle(IInvocation invocation)
         {
+            RecordContext.Current.EndInvocation();
             var point = RecordContext.Current.CurrentPoint;
             var result = invocation.ReturnValue;
             var jsonResult = JsonConvert.SerializeObject(result);
@@ -29,11 +28,9 @@ namespace NInsight.Core.Handlers.Record
                                   };
             point.ReturnValue = returnParameter;
 
-            this.PointRepository.Add(point);
-            this.NodeRepository.AddPoint(point);
+            this.ApplicationRepository.Create(point);
             
-
-            RecordContext.Current.EndInvocation();
+            
         }
     }
 }

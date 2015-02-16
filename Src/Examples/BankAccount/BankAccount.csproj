@@ -67,9 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
-    <Compile Include="DepositCommand.cs" />
-    <Compile Include="DepositHandler.cs" />
+    <Compile Include="ITransferHandler.cs" />
+    <Compile Include="TransferCommand.cs" />
+    <Compile Include="TransferHandler.cs" />
     <Compile Include="CheckingAccount.cs" />
+    <Compile Include="FeeCalculator.cs" />
     <Compile Include="IAccountRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

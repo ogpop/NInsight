@@ -15,13 +15,13 @@ namespace NInsight.Core.Runners
 {
     public class Replay
     {
-        public IGenericRepository<Application> ApplicationRepository { get; set; }
+        internal ISystemRepository ApplicationRepository { get; set; }
 
         #region Public Methods and Operators
 
         public void Run(string applicationId, string runName)
         {
-            var app = this.ApplicationRepository.FindBy(a => a.Id == applicationId).FirstOrDefault();
+            var app = this.ApplicationRepository.GetApplicationById(applicationId);
             var run = app.Runs.FirstOrDefault(r => r.Name == runName);
             //foreach (var run in runs)
             {

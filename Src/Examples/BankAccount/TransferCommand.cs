@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    public class DepositCommand
+    public class TransferCommand
     {
-        public string AccountId { get; set; }
+        public string DebitAccountId { get; set; }
+        public string CreditAccountId { get; set; }
         public decimal Amount { get; set; }
-
+        
     }
 }

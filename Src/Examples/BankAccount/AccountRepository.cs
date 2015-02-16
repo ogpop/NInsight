@@ -9,7 +9,7 @@ namespace BankAccount
     {
         public CheckingAccount Get(string accountId)
         {
-            return  new CheckingAccount(10000);
+            return  new CheckingAccount(10000){FeeCalculator = new FeeCalculator()};
         }
         public  void  Save(CheckingAccount account)
         {

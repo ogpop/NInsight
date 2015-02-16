@@ -30,7 +30,7 @@ namespace NInsight.Persistence.Neo4j
 
         public void AddRun(Application application, Run run)
         {
-            Create(application);
+           
             this.graphClient.Cypher.Match("(app:Application)")
                 .Where((Application app) => app.Id == run.ApplicationId)
                 .Create("app-[:Has]->(run:Run {newRun})")
@@ -41,7 +41,7 @@ namespace NInsight.Persistence.Neo4j
         public void AddClass(ClassType classType)
         {
             this.graphClient.Cypher.Match("(run:Run)")
-                .Where((Run run) => run.RunId == classType.RunId)
+                .Where((Run run) => run.Id == classType.RunId)
                 .Create("run-[:Has]->(classType:ClassType {newClassType})")
                 .WithParam("newClassType", classType)
                 .ExecuteWithoutResults();

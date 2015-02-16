@@ -7,7 +7,7 @@ namespace BankAccount
 {
     public class CheckingAccount 
     {
-         
+        public FeeCalculator FeeCalculator { get; set; }
 
         private decimal _balance;
 
@@ -32,7 +32,9 @@ namespace BankAccount
 
         public virtual void Deposit(decimal amount)
         {
-            this._balance += amount;
+
+            var fee = FeeCalculator.DepositFee(amount);
+            this._balance += amount - fee;
         }
   
     }

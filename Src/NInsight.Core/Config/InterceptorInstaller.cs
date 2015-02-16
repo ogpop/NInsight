@@ -33,11 +33,8 @@ namespace NInsight.Core.Config
                              || Configuration.Configure.Conventions.IsStartpointType(service)
                              || Configuration.Configure.Conventions.IsTracepointType(service))
                          {
-                             if (service.Name.EndsWith("FaultManager"))
-                             {
-                                 // handler.ComponentModel.Interceptors.BeginInvocation(interceptor);
-                             }
-                             if (service.IsInterface && !service.IsNotPublic)
+                             
+                            if (service.IsInterface )
                              {
                                  handler.ComponentModel.Interceptors.Add(interceptor);
                              }

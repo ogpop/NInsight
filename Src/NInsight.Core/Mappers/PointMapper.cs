@@ -18,7 +18,7 @@ namespace NInsight.Core.Mappers
         {
             var classType = new ClassType
                             {
-                                RunId = RecordContext.Current.Run.RunId,
+                                RunId = RecordContext.Current.Run.Id,
                                 TypeFullName =
                                     RegisteredType(invocation.InvocationTarget.GetType())
                                     .AssemblyQualifiedName,
@@ -35,8 +35,8 @@ namespace NInsight.Core.Mappers
                                     RegisteredType(invocation.InvocationTarget.GetType()).FullName,
                                     invocation.Method.Name),
                             MethodName = invocation.Method.Name,
-                            RunId = RecordContext.Current.Run.RunId,
-                            ClassId = classType.ClassId,
+                            Run1Id = RecordContext.Current.Run.Id,
+                            Class1Id = classType.ClassId,
                             Class = classType
                         };
 
