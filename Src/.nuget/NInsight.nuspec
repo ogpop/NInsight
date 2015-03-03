@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>NInsight</id>
+    <version>0.1.0</version>
+    <authors>Oljeg Popovic</authors>
+    <owners>Oljeg Popovic</owners>
+    <licenseUrl>https://github.com/ogpop/NInsight/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ogpop/NInsight</projectUrl>
+  
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NInsight - Application runtime insight for your .net projects</description>
+    <releaseNotes>Initial.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>NInsight</tags>
+    <dependencies>
+      <dependency id="Castle.Core" version="3.3.3" />
+	  <dependency  id="Castle.Windsor" version="3.3.0" />
+	  <dependency id="Common.Logging" version="3.0.0"  />
+	  <dependency id="Common.Logging.Core" version="3.0.0"/>
+	  <dependency id="CompareNETObjects" version="3.01.0.0"  />
+	  <dependency id="Newtonsoft.Json" version="6.0.3"  />
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="..\NInsight.Core\bin\release\NInsight.Core.dll" target="lib\net45\" />
+    <file src="..\NInsight.Persistence\bin\release\NInsight.Persistence.dll" target="lib\net45\" />
+  </files>
+  
+</package>
