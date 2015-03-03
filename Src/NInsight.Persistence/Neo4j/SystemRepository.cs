@@ -16,10 +16,12 @@ namespace NInsight.Persistence.Neo4j
         public GraphClient graphClient { get; set; }
         public void Create(Core.Domain.Point point)
         {
+          
             var classType = point.Class;
+            this.AddClass(classType);
             point.ToNode();
             this.graphClient.Cypher.Match("(ct:ClassType)")
-                .Where((ClassType ct) => ct.TypeFullName == point.TypeFullName)
+                .Where((ClassType ct) => ct.Id == point.TypeFullName)
                 .Create("ct-[:HAS]->(point:Point {newPoint})")
                 .WithParam("newPoint", point)
                 .ExecuteWithoutResults();
@@ -34,21 +36,27 @@ namespace NInsight.Persistence.Neo4j
                 .Create("point1-[:CALLS]->point2")
                 .ExecuteWithoutResults();
 
-            this.AddClass(classType);
+          // 
         }
 
         private void AddClass(ClassType classType)
         {
-            //this.graphClient.Cypher.Merge("(app:Application { Id: {newApp}.Id })")
+            //this.graphClient.Cypher.Match("(ct:ClassType)")
+            //        .Where((ClassType ct) => ct.TypeFullName == point.TypeFullName)
+            //        .Create("ct-[:HAS]->(point:Point {newPoint})")
+            //        .WithParam("newPoint", point)
+            //        .ExecuteWithoutResults();
+            //this.graphClient.Cypher.Merge("(ct:ClassType { Id: {classType}.Id })")
             //    .OnCreate()
-            //    .Set("app = {newApp}")
-            //    .WithParams(new { newApp })
+            //    .Set("ct = {classType}")
+            //    .WithParams(new { classType })
             //    .ExecuteWithoutResults();
 
+             
 
-            this.graphClient.Cypher.Merge("(run:Run)")
+            this.graphClient.Cypher.Match("(run:Run)")
                 .Where((Run run) => run.Id == classType.RunId)
-                .Create("run-[:Has]->(classType:ClassType {newClassType})")
+                .CreateUnique("run-[:Has]->(classType:ClassType {newClassType})")
                 .WithParam("newClassType", classType)
                 .ExecuteWithoutResults();
 

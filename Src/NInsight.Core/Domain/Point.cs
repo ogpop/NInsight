@@ -26,7 +26,7 @@ namespace NInsight.Core.Domain
        // [ForeignKey("RunId")]
        // public Run Run { get; set; }
 
-        public Guid Class1Id { get; set; }
+        public string ClassId { get; set; }
 
         public string TypeFullName { get; set; }
 

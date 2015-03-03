@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankAccount
+﻿namespace BankAccount
 {
-    public class CheckingAccount 
+    public class CheckingAccount
     {
-        public FeeCalculator FeeCalculator { get; set; }
-
         private decimal _balance;
 
-        public CheckingAccount (decimal balance)
+        public CheckingAccount(decimal balance)
         {
-                this._balance = balance;
+            this._balance = balance;
         }
- 
+
+        public FeeCalculator FeeCalculator { get; set; }
 
         public virtual decimal Balance
         {
@@ -32,10 +26,8 @@ namespace BankAccount
 
         public virtual void Deposit(decimal amount)
         {
-
-            var fee = FeeCalculator.DepositFee(amount);
+            var fee = this.FeeCalculator.DepositFee(amount);
             this._balance += amount - fee;
         }
-  
     }
 }

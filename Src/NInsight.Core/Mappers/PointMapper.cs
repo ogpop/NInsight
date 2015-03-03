@@ -19,7 +19,7 @@ namespace NInsight.Core.Mappers
             var classType = new ClassType
                             {
                                 RunId = RecordContext.Current.Run.Id,
-                                TypeFullName =
+                                Id =
                                     RegisteredType(invocation.InvocationTarget.GetType())
                                     .AssemblyQualifiedName,
                                 FriendlyName =
@@ -36,7 +36,7 @@ namespace NInsight.Core.Mappers
                                     invocation.Method.Name),
                             MethodName = invocation.Method.Name,
                             Run1Id = RecordContext.Current.Run.Id,
-                            Class1Id = classType.ClassId,
+                            ClassId = classType.Id,
                             Class = classType
                         };
 

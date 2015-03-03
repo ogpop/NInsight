@@ -8,16 +8,16 @@ namespace NInsight.Core.Domain
     {
         public ClassType()
         {
-            this.ClassId = Guid.NewGuid();
+             
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ClassId { get; set; }
+        public string Id { get; set; }
+         
 
         public Guid RunId { get; set; }
 
-        public string TypeFullName { get; set; }
 
         public string FriendlyName { get; set; }
     }
